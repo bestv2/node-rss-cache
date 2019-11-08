@@ -1,7 +1,7 @@
 # rss cache for node 
-A node cache lib
-Can be used alone without a message queue system
-Or Can sync data between server or pm2 process depends on redis, or some other message queue.
+A node cache lib  
+Can be used alone without a message queue system  
+Or Can sync data between server or pm2 process depends on redis, or some other message queue.  
  
 ## Install 
 `npm install rss-cache` 
