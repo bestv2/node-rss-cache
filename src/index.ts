@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Rss } from './rss/Rss'
-
+import rss, { Rss } from './rss'
+export { rss }
 export interface Cached {
   time: number,
   data: Promise<object> | object

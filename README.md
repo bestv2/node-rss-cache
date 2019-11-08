@@ -43,5 +43,5 @@ you can try it with
 then visist  
 [http://localhost:6060/?key=b](http://localhost:6060/?key=b)  
 [http://localhost:6060/?key=b&type=clear](http://localhost:6060/?key=b&type=clear)  
-[http://localhost:6060/?key=b&sync=async](http://localhost:6060/?key=b)  
+[http://localhost:6060/?key=c&sync=async](http://localhost:6060/?key=c&sync=async)  
 in your browser
