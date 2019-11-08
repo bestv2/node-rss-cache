@@ -8,11 +8,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
+  "repository": "https://github.com/bestv2/node-rss-cache.git",
+  "author": "wind.wang",
+  "keywords": [
+    "nodecache",
+    "rss",
+    "cache"
+  ],
   "dependencies": {
     "uuid": "^3.3.3"
   },
-  "author": "wind.wang",
-  "license": "MIT",
+  "license": "ISC",
   "devDependencies": {
     "typescript": "^3.7.2",
     "ioredis": "^4.14.1",
