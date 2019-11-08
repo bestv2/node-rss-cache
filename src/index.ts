@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import RssConfig from './rss/RssConfig'
+import { Rss } from './rss/Rss'
 
 export interface Cached {
   time: number,
@@ -11,8 +11,8 @@ export enum RssType {
   SET = 'SET',
 }
 
-const isPormiseLike: Function = (fn: any) => {
-  return !!(fn.then && fn.catch)
+const isPormiseLike: Function = (fnOrPromise: any) => {
+  return !!(fnOrPromise.then && fnOrPromise.catch)
 }
 
 
@@ -24,7 +24,7 @@ class RssCache {
   stores: Object
   uuid: string
   broadcast: any
-  public static initSync(opt: RssConfig) {
+  public static initSync(opt: Rss) {
     const { publish, onMessage, channel } = opt
     if (publish && onMessage && channel) {
       RssCache.prototype.broadcast = (type, cacheName, key, record = null) => {
@@ -61,22 +61,18 @@ class RssCache {
     this.stores[key] = record
     if (needBroadcast && this.broadcast) this.broadcast(RssType.SET, this.cacheName, key, record)
   }
-  get(fn: any, key: string, needBroadcast = true): any {
+  get(fnOrPromise: any, key: string, needBroadcast = true): any {
     console.debug(`get from uuid: ${this.uuid}`)
     const cached: Cached = this.stores[key]
     const now = new Date().getTime()
-    const isPromise: boolean = isPormiseLike(fn)
+    const isPromise: boolean = isPormiseLike(fnOrPromise)
     if (this.expire > 0 && cached && now - cached.time <= this.expire) {
       console.debug('cached:', JSON.stringify(cached.data))
       return (isPromise ? Promise.resolve(cached.data) : cached.data)
     }
-    if (isPormiseLike(fn)) {
-      return fn.then((data) => {
+    if (isPormiseLike(fnOrPromise)) {
+      return fnOrPromise.then((data) => {
         console.debug('new cache, promise:', JSON.stringify(data))
-        // this.stores[key] = {
-        //   time: now,
-        //   data,
-        // }
         this.setRecord(key, {
           time: now,
           data,
@@ -85,12 +81,8 @@ class RssCache {
       })
 
     } else {
-      const data = fn()
+      const data = fnOrPromise()
       console.debug('new cache, function:', JSON.stringify(data))
-      // this.stores[key] = {
-      //   time: now,
-      //   data: data,
-      // }
       this.setRecord(key, {
         time: now,
         data,

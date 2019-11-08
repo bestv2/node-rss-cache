@@ -28,7 +28,8 @@ val.then((value) => {
 })
 ```
 
-### sync between servers with redis 
+### sync between servers or diffrent processes, depend on redis pub/sub
+you can allso depend on others message queue 
 ```javascript 
 RssCache.initSync(new RssRedis({channel: 'RssCacheChannel', host: 'localhost'}))
 ```
@@ -36,7 +37,7 @@ RssCache.initSync(new RssRedis({channel: 'RssCacheChannel', host: 'localhost'}))
 ## Examples 
 you can try it with  
 `npm install -g pm2`  
-`rm -rf dist && npm run build && cd dist/examples && pm2 start demo.js -i 2`
+`rm -rf dist && npm run build && cd dist/examples && pm2 start demo.js -i 2`  
 then visist  
 [http://localhost:6060/?key=b](http://localhost:6060/?key=b)  
 [http://localhost:6060/?key=b&type=clear](http://localhost:6060/?key=b&type=clear)  

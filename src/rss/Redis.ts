@@ -1,11 +1,11 @@
 import Redis from 'ioredis'
-import RssConfig from './RssConfig'
-export default class RedisRss implements RssConfig {
+import { Rss, RssConfig } from './Rss'
+export default class RedisRss implements Rss {
   config: Object
   consumer
   producer
   channel
-  constructor(config) {
+  constructor(config: RssConfig) {
     this.config = config
     const { channel, ...redisConfig } = config
     try {
@@ -24,7 +24,7 @@ export default class RedisRss implements RssConfig {
     this.consumer.on("message", (channel, message) => {
       try {
         cb(JSON.parse(message))
-      } catch(e) {
+      } catch (e) {
         console.warn(`redis on message err, channel: ${channel}`, message)
       }
     })
