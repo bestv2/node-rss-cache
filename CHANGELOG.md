@@ -7,3 +7,6 @@ add some d.ts
 # 0.1.2 
 add clearAll method 
  
+# 0.1.3 
+remove src from npm package 
+ 
