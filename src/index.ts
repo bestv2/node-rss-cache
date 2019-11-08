@@ -7,7 +7,8 @@ export interface Cached {
 }
 
 export enum RssType {
-  CLEAR = 'clear',
+  CLEAR = 'CLEAR',
+  CLEAR_ALL = 'CLEAR_ALL',
   SET = 'SET',
 }
 
@@ -38,6 +39,9 @@ class RssCache {
           switch (type) {
             case RssType.CLEAR:
               instance.clear(key, false)
+              break
+            case RssType.CLEAR_ALL:
+              instance.clearAll(false)
               break
             case RssType.SET:
               instance.setRecord(key, record, false)
@@ -94,6 +98,10 @@ class RssCache {
     console.log(`clear ${!!this.stores[key] ? '' : 'no '}cached`, key)
     delete this.stores[key]
     if (needBroadcast && this.broadcast) this.broadcast(RssType.CLEAR, this.cacheName, key)
+  }
+  clearAll(needBroadcast = true) {
+    this.stores = {}
+    if (needBroadcast && this.broadcast) this.broadcast(RssType.CLEAR_ALL, this.cacheName)
   }
 }
 export default RssCache

@@ -1,6 +1,6 @@
 {
   "name": "rss-cache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A synchronous node cache package based on redis sub & pub",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

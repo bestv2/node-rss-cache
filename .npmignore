@@ -1,1 +1,4 @@
 examples
+.vscode
+node_modules
+.histor
