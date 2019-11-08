@@ -1,0 +1,21 @@
+{
+  "name": "rss-cache",
+  "version": "0.1.0",
+  "description": "A synchronous node cache package based on redis sub & pub",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "uuid": "^3.3.3"
+  },
+  "author": "wind.wang",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.7.2",
+    "ioredis": "^4.14.1",
+    "ts-node": "^8.4.1"
+  }
+}

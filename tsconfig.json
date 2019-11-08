@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "allowJs": true,
+    "sourceMap": true,
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "outDir": "dist",
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/**/*",
+    "examples/*"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
