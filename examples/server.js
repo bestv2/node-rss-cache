@@ -36,7 +36,6 @@ class Server {
                   resolve(parseInt(Math.random(100) * 100))
                 }, 1000)
               }), key)
-              console.log(val)
               val.then((value) => {
                 res.write(`get key [${key}]: ${value}`);
                 res.end();
